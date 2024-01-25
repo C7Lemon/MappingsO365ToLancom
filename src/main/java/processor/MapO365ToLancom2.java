@@ -26,12 +26,9 @@ public class MapO365ToLancom2 implements Processor {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode json = mapper.readTree(payload);
 
-        // splitArray has size 1
-        ArrayNode splitArray = (ArrayNode) json.get("arrayToSplit");
 
-        ArrayNode value = (ArrayNode) splitArray.get(0).get("value");
-
-        String a = String.valueOf(splitArray.get(0).get("@odataContext"));
+        ArrayNode value = (ArrayNode) json.get(0).get("value");
+        String a = String.valueOf(json.get(0).get("@odataContext"));
         System.out.println(a);
         //RuhrTestSchild
         if(a.contains("Raum_BO_Ruhr%40c-a-s.de")){
